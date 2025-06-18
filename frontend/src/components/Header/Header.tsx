@@ -1,11 +1,29 @@
-import { Generator } from "../pictures/Menu/Generator";
-import { Uploader } from "../pictures/Menu/Uploader";
+import { Generator } from "../pictures/Menu/Routers/Generator";
+import { GeneratorCurr } from "../pictures/Menu/Routers/GeneratorCurr";
+import { History } from "../pictures/Menu/Routers/History";
+import { HistoryCurr } from "../pictures/Menu/Routers/HistoryCurr";
+import { Uploader } from "../pictures/Menu/Routers/Uploader";
+import { UploaderCurr } from "../pictures/Menu/Routers/UploaderCurr";
 import { SummerSchoolLogo } from "../pictures/SummerSchoolLogo";
-import { History } from "./../pictures/Menu/History";
 import { Tesis } from "./../pictures/Menu/Tesis/Tesis";
 import classes from "./Header.module.css";
 
-export const Header = () => {
+export const Header = ({ important }: { important: string }) => {
+    let uploader: boolean = false;
+    let generator: boolean = false;
+    let history: boolean = false;
+
+    switch (important) {
+        case "uploader":
+            uploader = true;
+            break;
+        case "generator":
+            generator = true;
+            break;
+        case "history":
+            history = true;
+            break;
+    }
     return (
         <div className={classes.header}>
             <div className={classes.leftPart}>
@@ -13,9 +31,9 @@ export const Header = () => {
                 <Tesis />
             </div>
             <div className={classes.menu}>
-                <Uploader />
-                <Generator />
-                <History />
+                {uploader ? <UploaderCurr /> : <Uploader />}
+                {generator ? <GeneratorCurr /> : <Generator />}
+                {history ? <HistoryCurr /> : <History />}
             </div>
         </div>
     );
