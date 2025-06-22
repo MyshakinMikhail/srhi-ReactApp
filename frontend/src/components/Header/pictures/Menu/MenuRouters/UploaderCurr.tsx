@@ -6,6 +6,7 @@ export const UploaderCurr = () => {
             viewBox="0 0 271 61"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
+            style={{ cursor: "pointer" }}
         >
             <path
                 d="M27.5 14.6841V32.2221"

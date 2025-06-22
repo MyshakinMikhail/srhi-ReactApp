@@ -1,0 +1,28 @@
+.button {
+    height: 70px;
+    width: 184px;
+    border-radius: 10px;
+
+    font-size: 30px;
+    border: none;
+    background-color: #ff5f00;
+
+    color: white;
+    font-family: "Roboto";
+
+    font-size: 38px;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    border: #201b10;
+}
+
+.text {
+    font-size: 38px;
+    color: #ff5f00;
+}

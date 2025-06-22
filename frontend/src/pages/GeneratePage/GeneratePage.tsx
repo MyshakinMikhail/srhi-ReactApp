@@ -1,8 +1,20 @@
+import { ErrorGenerate } from "../../components/GenerateBody/ErrorGenerate/ErrorGenerate";
 import { GenerateButton } from "../../components/GenerateBody/GenerateButton/GenerateButton";
+import { Loader } from "../../components/GenerateBody/Loader/Loader";
+import { SuccessGenerate } from "../../components/GenerateBody/SuccessGenerate/SuccessGenerate";
 import { Header } from "../../components/Header/Header";
+import { GenerateService } from "../../services/GenerateService";
 import classes from "./GeneratePage.module.css";
 
 export const GeneratePage = () => {
+    const { generateFile, generateState, setGenerateState, error, setError } =
+        GenerateService();
+
+    const handleClear = () => {
+        setGenerateState("original");
+        setError("");
+    };
+
     return (
         <>
             <div className={classes.container}>
@@ -10,7 +22,22 @@ export const GeneratePage = () => {
                 <div className={classes.title}>
                     Сгенерируйте готовый csv-файл нажатием одной кнопки
                 </div>
-                <GenerateButton />
+
+                {!error && generateState === "original" && (
+                    <GenerateButton onClick={generateFile} />
+                )}
+                {!error && generateState === "loading" && (
+                    <>
+                        <Loader />
+                        <div className={classes.title}>
+                            идет процесс генерации
+                        </div>
+                    </>
+                )}
+                {!error && generateState === "success" && (
+                    <SuccessGenerate onClick={handleClear} />
+                )}
+                {error && <ErrorGenerate onClick={handleClear} />}
             </div>
         </>
     );

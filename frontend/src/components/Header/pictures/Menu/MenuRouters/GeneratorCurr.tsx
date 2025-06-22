@@ -6,6 +6,7 @@ export const GeneratorCurr = () => {
             viewBox="0 0 280 61"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
+            style={{ cursor: "pointer" }}
         >
             <g clip-path="url(#clip0_12_580)">
                 <path

@@ -1,10 +1,10 @@
 import classes from "./Header.module.css";
-import { Generator } from "./pictures/Menu/Routers/Generator";
-import { GeneratorCurr } from "./pictures/Menu/Routers/GeneratorCurr";
-import { History } from "./pictures/Menu/Routers/History";
-import { HistoryCurr } from "./pictures/Menu/Routers/HistoryCurr";
-import { Uploader } from "./pictures/Menu/Routers/Uploader";
-import { UploaderCurr } from "./pictures/Menu/Routers/UploaderCurr";
+import { Generator } from "./pictures/Menu/MenuRouters/Generator";
+import { GeneratorCurr } from "./pictures/Menu/MenuRouters/GeneratorCurr";
+import { History } from "./pictures/Menu/MenuRouters/History";
+import { HistoryCurr } from "./pictures/Menu/MenuRouters/HistoryCurr";
+import { Uploader } from "./pictures/Menu/MenuRouters/Uploader";
+import { UploaderCurr } from "./pictures/Menu/MenuRouters/UploaderCurr";
 import { Tesis } from "./pictures/Menu/Tesis/Tesis";
 import { SummerSchoolLogo } from "./pictures/SummerSchoolLogo";
 

@@ -12,6 +12,7 @@ export const Uploader = () => {
             onClick={() => {
                 navigate("/download");
             }}
+            style={{ cursor: "pointer" }}
         >
             <path
                 d="M27.5 17.6841V35.2221"

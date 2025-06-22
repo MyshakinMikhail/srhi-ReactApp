@@ -13,6 +13,7 @@ export const History = () => {
             onClick={() => {
                 navigate("/history");
             }}
+            style={{ cursor: "pointer" }}
         >
             <path
                 d="M27.5007 23.9966V30.4999L31.5653 34.5644"

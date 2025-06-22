@@ -6,6 +6,7 @@ export const HistoryCurr = () => {
             viewBox="0 0 190 61"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
+            style={{ cursor: "pointer" }}
         >
             <path
                 d="M27.5007 20.9966V27.4999L31.5653 31.5644"

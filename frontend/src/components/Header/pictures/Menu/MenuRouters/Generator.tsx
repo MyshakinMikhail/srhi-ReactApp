@@ -12,6 +12,7 @@ export const Generator = () => {
             onClick={() => {
                 navigate("/generate");
             }}
+            style={{ cursor: "pointer" }}
         >
             <g clip-path="url(#clip0_12_601)">
                 <path
