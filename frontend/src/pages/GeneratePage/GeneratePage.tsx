@@ -3,12 +3,12 @@ import { GenerateButton } from "../../components/GenerateBody/GenerateButton/Gen
 import { Loader } from "../../components/GenerateBody/Loader/Loader";
 import { SuccessGenerate } from "../../components/GenerateBody/SuccessGenerate/SuccessGenerate";
 import { Header } from "../../components/Header/Header";
-import { GenerateService } from "../../services/GenerateService";
+import { useGenerateService } from "../../hooks/useGenerateService";
 import classes from "./GeneratePage.module.css";
 
 export const GeneratePage = () => {
     const { generateFile, generateState, setGenerateState, error, setError } =
-        GenerateService();
+        useGenerateService();
 
     const handleClear = () => {
         setGenerateState("original");

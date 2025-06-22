@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useHistoryStore } from "../hooks/useHistoryStore";
+import { useHistoryStore } from "../store/useHistoryStore";
 import type { Result, StatusFile, UseDownloadFileReturn } from "../types/types";
 
 export const useDownloadService = (): UseDownloadFileReturn => {
