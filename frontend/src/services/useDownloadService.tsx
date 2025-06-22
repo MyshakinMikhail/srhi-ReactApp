@@ -1,10 +1,6 @@
 import { useEffect, useState } from "react";
-import type {
-    HistoryResult,
-    Result,
-    StatusFile,
-    UseDownloadFileReturn,
-} from "../types/types";
+import { useHistoryStore } from "../hooks/useHistoryStore";
+import type { Result, StatusFile, UseDownloadFileReturn } from "../types/types";
 
 export const useDownloadService = (): UseDownloadFileReturn => {
     const [status, setStatus] = useState<StatusFile>("original");
@@ -15,6 +11,7 @@ export const useDownloadService = (): UseDownloadFileReturn => {
         undefined
     );
     const [isReadyToAdd, setIsReadyToAdd] = useState<boolean>(false);
+    const { addToHistory } = useHistoryStore();
 
     function getFormattedDateFromDayOfYear(
         dayOfYear: number,
@@ -31,7 +28,7 @@ export const useDownloadService = (): UseDownloadFileReturn => {
         return date.toLocaleDateString("ru-RU", options);
     }
 
-    const translater = (object: HistoryResult): HistoryResult | undefined => {
+    const translater = (object: Result): Result | undefined => {
         if (
             object.less_spent_at === undefined ||
             object.big_spent_at === undefined ||
@@ -51,12 +48,8 @@ export const useDownloadService = (): UseDownloadFileReturn => {
             return;
         }
 
-        const newObject: HistoryResult = {
+        const newObject: Result = {
             ...object,
-            id: object.id,
-            fileName: object.fileName,
-            date: new Date(),
-            status: status,
             less_spent_at: getFormattedDateFromDayOfYear(
                 object.less_spent_at,
                 2025
@@ -82,40 +75,14 @@ export const useDownloadService = (): UseDownloadFileReturn => {
     };
 
     useEffect(() => {
-        // Добавление в историю
         if (status === "successSend" || status === "error") {
-            try {
-                const raw = localStorage.getItem("files");
-                let history: HistoryResult[] = [];
-                if (raw) {
-                    const parsed = JSON.parse(raw);
-                    console.log(parsed);
-                    if (Array.isArray(parsed)) {
-                        history = parsed;
-                    }
-                }
-                const id = history.length;
-                let info = {
-                    id: id,
-                    fileName: fileName,
-                    date: new Date(),
-                    status: status,
-                };
-                if (status === "successSend") {
-                    info = { ...result, ...info };
-                }
-                history.push(info);
-
-                localStorage.setItem("files", JSON.stringify(history));
-            } catch (e) {
-                console.error("Ошибка сохранения в localStorage:", e);
-            }
+            console.log(status, fileName, result);
+            addToHistory(status, fileName, result);
         }
     }, [isReadyToAdd]);
 
     const sendFile = async () => {
         if (!downloadedFile) return;
-
         setResult(undefined);
         setStatus("parsing");
         setError(null);

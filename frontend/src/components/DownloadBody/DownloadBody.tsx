@@ -28,13 +28,13 @@ export const DownloadBody = () => {
                     сверхнизкое время
                 </div>
 
-                {status === "original" && (
+                {!error && status === "original" && (
                     <>
                         <DragDropArea onFileSelect={downloadFile} />
                         <SendButton />
                     </>
                 )}
-                {(status === "loading" || status === "parsing") && (
+                {!error && (status === "loading" || status === "parsing") && (
                     <>
                         <div className={classes.body}>
                             <Loader />
@@ -47,25 +47,29 @@ export const DownloadBody = () => {
                         <SendButton />
                     </>
                 )}
-                {(status === "successLoading" || status === "successSend") && (
-                    <>
-                        <div className={`${classes.body} ${classes.success}`}>
-                            <SuccessDownload
-                                fileName={fileName}
-                                onClick={deleteData}
-                            />
-                            <div className={classes.text}>
-                                {status === "successLoading"
-                                    ? "файл загружен!"
-                                    : "готово!"}
+                {!error &&
+                    (status === "successLoading" ||
+                        status === "successSend") && (
+                        <>
+                            <div
+                                className={`${classes.body} ${classes.success}`}
+                            >
+                                <SuccessDownload
+                                    fileName={fileName}
+                                    onClick={deleteData}
+                                />
+                                <div className={classes.text}>
+                                    {status === "successLoading"
+                                        ? "файл загружен!"
+                                        : "готово!"}
+                                </div>
                             </div>
-                        </div>
-                        {status !== "successSend" && (
-                            <SendButton active={true} sendFile={sendFile} />
-                        )}
-                    </>
-                )}
-                {Boolean(error) && (
+                            {status !== "successSend" && (
+                                <SendButton active={true} sendFile={sendFile} />
+                            )}
+                        </>
+                    )}
+                {error && (
                     <>
                         <div className={`${classes.body} ${classes.error}`}>
                             <ErrorDownload
@@ -82,7 +86,8 @@ export const DownloadBody = () => {
             {status !== "successSend" && status !== "parsing" && (
                 <DownloadFooter />
             )}
-            {(status === "parsing" || status === "successSend") &&
+            {!error &&
+                (status === "parsing" || status === "successSend") &&
                 result !== null && (
                     <Highlights highlights={result} backgroundColor="white" />
                 )}

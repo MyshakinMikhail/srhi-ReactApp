@@ -11,6 +11,17 @@ export interface deleteFile extends ClearHistory {
     fileId: number;
 }
 
+export interface HistoryStore {
+    history: HistoryResult[];
+    addToHistory: (
+        status: StatusFile,
+        fileName: string | null,
+        result: Result | undefined
+    ) => void;
+    deleteFile: (fileId: number) => void;
+    clearHistory: () => void;
+}
+
 export type UseDownloadFileReturn = [
     deleteData: () => void,
     sendFile: () => void,
@@ -20,21 +31,6 @@ export type UseDownloadFileReturn = [
     fileName: string | null,
     result?: Result
 ];
-
-export interface RequestHistoryState {
-    history: RequestHistoryItem[];
-    addToHistory: (item: Omit<RequestHistoryItem, "id">) => void;
-    removeFromHistory: (id: string) => void;
-    clearHistory: () => void;
-}
-
-export type RequestHistoryItem = {
-    id?: string; // уникальный ID
-    date?: string;
-    fileName: string;
-    status: "success" | "failed";
-    result?: HistoryResult;
-};
 
 export type CivType = "humans" | "monsters" | "blobs";
 
