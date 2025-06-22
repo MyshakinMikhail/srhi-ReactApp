@@ -180,8 +180,10 @@ export const useDownloadService = (): UseDownloadFileReturn => {
             setError(null);
             setFileName(file.name);
 
-            await new Promise((resolve) => setTimeout(resolve, 500));
-
+            if (!file.size) {
+                setStatus("error");
+                setError("Ошибка при загрузке файла");
+            }
             setStatus("successLoading");
         } catch (err) {
             setStatus("error");
