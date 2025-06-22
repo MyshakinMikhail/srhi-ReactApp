@@ -1,0 +1,21 @@
+.text {
+    font-size: 38px;
+}
+.button {
+    width: 144px;
+    height: 70px;
+    border-radius: 10px;
+
+    font-family: "Roboto";
+    font-size: 28px;
+
+    border: none;
+    background-color: #d4fae6;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}

@@ -1,0 +1,20 @@
+.tesis {
+    /* Frame 2131329690 */
+
+    /* Auto layout */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 4.77421px 6.36562px 6.36562px;
+
+    width: 523.73px;
+    height: 38.14px;
+
+    background: #cb81ff;
+
+    /* Inside auto layout */
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}

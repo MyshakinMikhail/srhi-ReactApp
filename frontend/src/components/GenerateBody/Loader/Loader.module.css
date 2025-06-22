@@ -1,0 +1,27 @@
+/* Стили контейнера для демонстрации */
+.container {
+    width: 300px; /* можно подстроить под нужный размер */
+    height: 60px;
+    background-color: #c47aff; /* пример фиолетового фона */
+    border-radius: 8px; /* закруглённые углы */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Анимация вращения */
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Сам спиннер */
+.loader {
+    width: 32px;
+    height: 32px;
+    border: 4px solid rgba(255, 255, 255, 0.3); /* светлый сегмент фона */
+    border-top-color: #4caf50; /* цвет активного сегмента (зелёный) */
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
