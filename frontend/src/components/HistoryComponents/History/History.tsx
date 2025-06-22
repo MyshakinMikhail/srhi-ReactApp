@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useHistoryStore } from "../../../hooks/useHistoryStore";
+import { useHistoryStore } from "../../../store/useHistoryStore";
 import type { HistoryResult } from "../../../types/types";
 import { ClearHistoryButton } from "../ClearHistoryButton/ClearHistoryButton";
 import { DeleteFile } from "../DeleteFile/DeleteFile";

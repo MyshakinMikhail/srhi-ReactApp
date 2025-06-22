@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export const GenerateService = () => {
+export const useGenerateService = () => {
     const [generateState, setGenerateState] = useState("original");
     const [error, setError] = useState("");
 
