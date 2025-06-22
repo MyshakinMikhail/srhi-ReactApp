@@ -1,4 +1,4 @@
-import { useDownloadService } from "../../hooks/useDownloadService";
+import { useDownloadService } from "../../api/useDownloadService";
 import { Loader } from "../GenerateBody/Loader/Loader";
 import classes from "./DownloadBody.module.css";
 import { DownloadFooter } from "./DownloadFooter/DownloadFooter";
